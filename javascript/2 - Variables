@@ -1,0 +1,205 @@
+
+Most of the time, a JavaScript application needs to work with information. Here are two examples:
+
+    a. An online shop – the information might include goods being sold and a shopping cart.
+    b. A chat application – the information might include users, messages, and much more.
+
+Variables are used to store this information.
+
+A variable is a “named storage” for data. We can use variables to store goodies, visitors, and other data.
+
+JavaScript Variables can be declared in 4 ways:
+    a. Automatically
+    b. Using var
+    c. Using let
+    d. Using const
+It is considered good programming practice to always declare variables before use.
+
+    Note:
+        The var keyword was used in all JavaScript code from 1995 to 2015.
+        The let and const keywords were added to JavaScript in 2015.
+        The var keyword should only be used in code written for older browsers.
+It's a good programming practice to declare all variables at the beginning of a script.
+We can declare variables to store data by using the var, let, or const keywords.
+
+    a. let – is a modern variable declaration.
+    b. var – is an old-school variable declaration.you can use when you in older version code
+    c. const – is like let, but the value of the variable can’t be changed.
+Variables should be named in a way that allows us to easily understand what’s inside them.
+
+
+Que - When to Use var, let, or const?
+Ans - 
+    1. Always declare variables
+    2. Always use const if the value should not be changed
+    3. Always use const if the type should not be changed (Arrays and Objects)
+    4. Only use let if you can't use const
+    5. Only use var if you MUST support old browsers.
+
+Que - what is Javascript Identifiers?
+Ans - All JavaScript variables must be identified with unique names.
+      These unique names are called identifiers.
+      Identifiers can be short names (like x and y) or more descriptive names (age, sum, totalVolume).
+      
+
+    
+Variable naming
+    There are two limitations on variable names in JavaScript:
+        a. The name must contain only letters, digits, or the symbols $ and _.
+        b. The first character must not be a digit.
+
+
+1. let keyword
+    we will know how to use variable keyword "let"
+        a. Variables declared with let have Block Scope
+        b. Variables declared with let must be Declared before use
+        c. Variables declared with let cannot be Redeclared in the same scope
+
+    Block Scope: 
+    a. Variables declared inside a { } block cannot be accessed from outside the block:
+     eg. 
+        {
+            let x = 5;
+        }
+        console.log(x) // this will give error x can NOT be used here
+
+    b. Variables defined with let can not be redeclared.
+       You can not accidentally redeclare a variable declared with let.
+       eg. 
+           let x = "John Doe";
+           let x = 0; // redeclare error
+
+       eg2. block level declaration and accessibility.
+           var x = 2;   // Allowed
+           let x = 3;   // Not allowed
+            {
+                let x = 2;   // Allowed
+                let x = 3;   // Not allowed
+            }
+            {
+                let x = 2;   // Allowed
+                var x = 3;   // Not allowed
+            }
+
+2. const keyword
+    a. Variables defined with const cannot be Redeclared
+    b. Variables defined with const cannot be Reassigned
+    c. Variables defined with const have Block Scope
+A variable defined with the const keyword cannot be reassigned:
+eg. const PI = 3.141592653589793;
+    PI = 3.14;      // This will give an error
+    PI = PI + 10;   // This will also give an error
+
+JavaScript const variables must be assigned a value when they are declared:
+eg. const PI = 3.14159265359; // correct
+    const PI;  
+    PI = 3.14159265359; // give an error must assign the value when declared
+
+Que - When to use JavaScript const?
+Ans - Always declare a variable with const when you know that the value should not be changed.
+      Use const when you declare:
+        a. A new Array
+        b. A new Object
+        c. A new Function
+        d. A new RegExp
+
+Que - constant objects and Array?
+Ans - The keyword const is a little misleading.
+    It does not define a constant value. It defines a constant reference to a value.
+    Because of this you can NOT:
+        a. Reassign a constant value
+        b. Reassign a constant array
+        c. Reassign a constant object
+    But you CAN:
+        a. Change the elements of constant array
+        b. Change the properties of constant object
+Arrays
+    You can change the elements of a constant array:
+    eg.  we can change element
+        // You can create a constant array:
+        const cars = ["Saab", "Volvo", "BMW"];
+
+        // You can change an element:
+        cars[0] = "Toyota";
+
+        // You can add an element:
+        cars.push("Audi");
+
+    But you can NOT reassign the array:
+    eg. we cant reassign array  
+        const cars = ["Saab", "Volvo", "BMW"];
+        cars = ["Toyota", "Volvo", "Audi"];    // ERROR
+
+objects
+    You can change the properties of a constant object:
+    eg. 
+        // You can create a const object:
+        const car = {type:"Fiat", model:"500", color:"white"};
+
+        // You can change a property:
+        car.color = "red";
+
+        // You can add a property:
+        car.owner = "Johnson";
+
+    But you can NOT reassign the object:
+    eg. 
+        const car = {type:"Fiat", model:"500", color:"white"};
+        car = {type:"Volvo", model:"EX60", color:"red"};   // ERROR
+Block Scope
+Declaring a variable with const is similar to let when it comes to Block Scope.
+The x declared in the block, in this example, is not the same as the x declared outside the block:
+eg. 
+    const x = 10;
+    // Here x is 10
+
+    {
+    const x = 2;
+    // Here x is 2
+    }
+
+    // Here x is 10
+
+Redeclaring an existing var or let variable to const, in the same scope, is not allowed:
+eg. 
+    var x = 2;     // Allowed
+    const x = 2;   // Not allowed
+
+    {
+    let x = 2;     // Allowed
+    const x = 2;   // Not allowed
+    }
+
+    {
+    const x = 2;   // Allowed
+    const x = 2;   // Not allowed
+    }
+
+Reassigning an existing const variable, in the same scope, is not allowed:
+eg.
+    const x = 2;     // Allowed
+    x = 2;           // Not allowed
+    var x = 2;       // Not allowed
+    let x = 2;       // Not allowed
+    const x = 2;     // Not allowed
+
+    {
+    const x = 2;   // Allowed
+    x = 2;         // Not allowed
+    var x = 2;     // Not allowed
+    let x = 2;     // Not allowed
+    const x = 2;   // Not allowed
+    }
+
+Redeclaring a variable with const, in another scope, or in another block, is allowed:
+eg.
+    const x = 2;       // Allowed
+    {
+    const x = 3;   // Allowed
+    }
+    {
+    const x = 4;   // Allowed
+    }
+3. var keyword
+
+
